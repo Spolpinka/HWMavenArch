@@ -16,12 +16,12 @@ public class Employee {
     private int age;
     private int cityId;
 
-    public Employee(String firstName, String lastName, String gender, int age, int city_id) {
+    public Employee(String firstName, String lastName, String gender, int age, int cityId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.cityId = city_id;
+        this.cityId = cityId;
     }
 
     @Override
