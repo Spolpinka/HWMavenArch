@@ -18,11 +18,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
              PreparedStatement ps = connection.prepareStatement("INSERT INTO employee " +
                      "(first_name, last_name, gender, age, city_id) VALUES " +
                      "((?), (?), (?), (?), (?))")){
-            ps.setString(1, employee.getFirst_name());
-            ps.setString(2, employee.getLast_name());
+            ps.setString(1, employee.getFirstName());
+            ps.setString(2, employee.getLastName());
             ps.setString(3, employee.getGender());
             ps.setInt(4, employee.getAge());
-            ps.setInt(5, employee.getCity_id());
+            ps.setInt(5, employee.getCityId());
             ps.execute();
             return true;
         } catch (SQLException e) {
@@ -38,7 +38,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ps.setInt(1, id);
             ps.executeQuery();
             ResultSet resultSet = ps.getResultSet();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 return new Employee(resultSet.getInt("id"),
                         resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
@@ -80,11 +80,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         PreparedStatement ps = connection.prepareStatement("UPDATE employee " +
                 "SET first_name = (?), last_name = (?), gender = (?), age = (?), city_id = (?) " +
                 "WHERE id = (?)")) {
-            ps.setString(1, employee.getFirst_name());
-            ps.setString(2, employee.getLast_name());
+            ps.setString(1, employee.getFirstName());
+            ps.setString(2, employee.getLastName());
             ps.setString(3, employee.getGender());
             ps.setInt(4, employee.getAge());
-            ps.setInt(5, employee.getCity_id());
+            ps.setInt(5, employee.getCityId());
             ps.setInt(6, id);
             ps.execute();
             return true;
