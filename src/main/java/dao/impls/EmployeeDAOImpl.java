@@ -38,7 +38,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ps.setInt(1, id);
             ps.executeQuery();
             ResultSet resultSet = ps.getResultSet();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 return new Employee(resultSet.getInt("id"),
                         resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
